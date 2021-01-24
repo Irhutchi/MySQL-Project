@@ -10,18 +10,35 @@ MySql environment. <br>
 There are two SQL scripts:
 1. MetCal.sql <br/>
 
-    * creates the database and tables
     * creates indexes and/or triggers
     * creates users and grants approppiate priviliges to users
     * populates the tables with records
-    * creates views <br>
+    * creates views 
+     * creates the database and tables <br>e.g. <br>
+    ```
+    CREATE TABLE IF NOT EXISTS staffMember(
+	staff_id int NOT NULL AUTO_INCREMENT,
+	supervisor_id INT, -- implementation of recursive relationship
+	fName VARCHAR(20) NOT NULL,
+	lName VARCHAR(20) NOT NULL,
+	DOB DATE NOT NULL,
+	position varchar(25) NOT NULL,
+	salary INT NOT NULL,
+	INDEX (supervisor_id), 
+	PRIMARY KEY(staff_id),
+	FOREIGN KEY(supervisor_id) REFERENCES staffMember(staff_id)
+   ); 
+
+   CREATE INDEX staff_id_ind on staffMember(fName,lName);
+   SHOW INDEX FROM staffMember; 
+    <br> ```
 2. MetCal_DML <br/>
 
     * script that contains the list of frequently used queries for the database. 
     * A variety of different queries used, including joins and sub-queries.
     
 
-![]()
+![](https://github.com/Irhutchi/MySQL-Project/blob/master/MySQL_WorkBench.PNG)
 
 For more information on MySQL Workbench, visit http://dev.mysql.com/doc/workbench/en<br>
 
