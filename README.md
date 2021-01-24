@@ -31,7 +31,7 @@ There are two SQL scripts:
 
    CREATE INDEX staff_id_ind on staffMember(fName,lName);
    SHOW INDEX FROM staffMember; 
-    <br> ```
+    ```  
 2. MetCal_DML <br/>
 
     * script that contains the list of frequently used queries for the database. 
